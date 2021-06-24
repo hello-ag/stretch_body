@@ -14,7 +14,10 @@ class Base(Device):
         Device.__init__(self, 'base')
         self.left_wheel = Stepper(usb='/dev/hello-motor-left-wheel')
         self.right_wheel = Stepper(usb='/dev/hello-motor-right-wheel')
-        self.status = {'timestamp_pc':0,'x':0,'y':0,'theta':0,'x_vel':0,'y_vel':0,'theta_vel':0, 'pose_time_s':0,'effort': [0, 0], 'left_wheel': self.left_wheel.status, 'right_wheel': self.right_wheel.status}
+        self.status = {'timestamp_pc':0,'x':0,'y':0,'theta':0,'x_vel':0,'y_vel':0,'theta_vel':0,
+                       'pose_time_s':0,'effort': [0, 0],
+                       'translation_force': 0, 'rotation_torque':0,
+                       'left_wheel': self.left_wheel.status, 'right_wheel': self.right_wheel.status}
         self.first_step=True
         wheel_circumference_m = self.params['wheel_diameter_m'] * pi
         self.meters_per_motor_rad = (wheel_circumference_m / (2.0 * pi)) / self.params['gr']
@@ -298,6 +301,7 @@ class Base(Device):
         e1 = self.status['right_wheel']['effort']
         t0 = self.status['left_wheel']['timestamp']
         t1 = self.status['right_wheel']['timestamp']
+        self.status['effort']=[e0,e1]
         self.status['translation_force'] = self.motor_current_to_translation_force(self.left_wheel.status['current'],self.right_wheel.status['current'])
         self.status['rotation_torque'] = self.motor_current_to_rotation_torque(self.left_wheel.status['current'],self.right_wheel.status['current'])
 
