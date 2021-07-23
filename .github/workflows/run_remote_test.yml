@@ -13,7 +13,6 @@ jobs:
         shell: bash
         env:
           SSH_KEY: ${{ secrets.STRETCH_SSH_KEY_GITHUB_ACTION }}
-      - run: cat the_key
       - run: chmod 400 the_key
-      - name: Log into stretch using ssh
-        run: ssh -i the_key hello-robot@98.234.153.4 -p 43770 -tt -o StrictHostKeyChecking=no 'uptime' < ./.github/workflows/ssh_commands_test.sh
+      - name: Log into stretch using ssh and run tests
+        run: ssh -i the_key hello-robot@98.234.153.4 -p 43770 -tt -o StrictHostKeyChecking=no < ./.github/workflows/ssh_commands_test.sh
