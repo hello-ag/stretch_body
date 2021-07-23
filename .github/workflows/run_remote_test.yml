@@ -16,4 +16,4 @@ jobs:
       - run: cat the_key
       - run: chmod 400 the_key
       - name: Log into stretch using ssh
-        run: cat ./.github/workflows/ssh_commands_test.bash | ssh -i the_key hello-robot@98.234.153.4 -p 43770 -tt -o StrictHostKeyChecking=no 'uptime'
+        run: ssh -i the_key hello-robot@98.234.153.4 -p 43770 -tt -o StrictHostKeyChecking=no 'uptime' < ./.github/workflows/ssh_commands_test.sh
