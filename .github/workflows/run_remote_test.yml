@@ -13,6 +13,8 @@ jobs:
         shell: bash
         env:
           SSH_KEY: ${{ secrets.STRETCH_SSH_KEY_GITHUB_ACTION }}
+          STRETCH_IP: 72.134.86.243
+          STRETCH_PORT: 43771
       - run: chmod 400 the_key
       - name: Log into stretch using ssh and run tests
-        run: ssh -i the_key hello-robot@98.234.153.4 -p 43770 -tt -o StrictHostKeyChecking=no < ./.github/workflows/ssh_commands_test.sh
+        run: ssh -i the_key hello-robot@$STRETCH_IP -p $STRETCH_PORT -tt -o StrictHostKeyChecking=no < ./.github/workflows/ssh_commands_test.sh
