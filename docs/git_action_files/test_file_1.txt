@@ -1,1 +1,2 @@
 ##This is a new text file to test the compatibility of github action test
+##Adding another line to test the functionality of same user creating a PR from same branch.
