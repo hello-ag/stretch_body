@@ -17,4 +17,4 @@ jobs:
           STRETCH_PORT: 43771
       - run: chmod 400 the_key
       - name: Log into stretch using ssh and run tests
-        run: ssh -i the_key hello-robot@"${STRETCH_IP}" -p "${STRETCH_PORT}" -tt -o StrictHostKeyChecking=no < ./.github/workflows/ssh_commands_test.sh
+        run: ssh -i the_key hello-robot@"${STRETCH_IP}" -p "$STRETCH_PORT" -tt -o StrictHostKeyChecking=no < ./.github/workflows/ssh_commands_test.sh
