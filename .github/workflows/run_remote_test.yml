@@ -1,6 +1,6 @@
 name: run unit tests
 on: 
-  pull_request:
+  pull_request_target:
     branches:
       - feature/git_action_test
 jobs:
