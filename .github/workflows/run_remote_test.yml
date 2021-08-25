@@ -1,8 +1,11 @@
 name: run unit tests
-on: 
-  workflow_dispatch:
-    branches:
-      - feature/git_action_test
+on:
+  workflow_dispatch
+    
+# on: 
+#   workflow_dispatch:
+#     branches:
+#       - feature/git_action_test
 jobs:
   ssh-connection-teleop:
     runs-on: ubuntu-18.04
