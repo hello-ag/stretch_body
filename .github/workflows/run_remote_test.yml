@@ -1,6 +1,6 @@
 name: run unit tests
 on: 
-  pull_request:
+  push:
     branches:
       - feature/git_action_test
 jobs:
@@ -17,4 +17,4 @@ jobs:
           STRETCH_PORT: 43771
       - run: chmod 400 the_key
       - name: Log into stretch using ssh and run tests
-        run: ssh -i the_key hello-robot@$STRETCH_IP -p $STRETCH_PORT -tt -o StrictHostKeyChecking=no < ./.github/workflows/ssh_commands_test.sh
+        run: ssh -i the_key hello-robot@${{env.STRETCH_IP}} -p ${{env.STRETCH_PORT}} -tt -o StrictHostKeyChecking=no < ./.github/workflows/ssh_commands_test.sh
