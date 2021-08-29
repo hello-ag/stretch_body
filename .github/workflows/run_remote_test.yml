@@ -1,8 +1,6 @@
 name: run unit tests
 on: 
   pull_request_target:
-    branches:
-      - feature/git_action_test
 jobs:
   ssh-connection-teleop:
     runs-on: ubuntu-18.04
