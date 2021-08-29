@@ -1,16 +1,7 @@
 name: run unit tests
-on:
-  workflow_dispatch:
-    inputs:
-      msg:
-        description: 'Release version tag'
-        default: 'v1.0.0'
-        required: true
-    
-# on: 
-#   workflow_dispatch:
-#     branches:
-#       - feature/git_action_test
+on: 
+  pull_request_target:
+
 jobs:
   ssh-connection-teleop:
     runs-on: ubuntu-18.04
