@@ -7,7 +7,7 @@
 '''
 import unittest
 import time
-from os import listdir
+from os import listdir, path
 import stretch_body.robot
 class Temporary_tests(unittest.TestCase):
 
@@ -36,11 +36,12 @@ class Temporary_tests(unittest.TestCase):
 	r.stop()
 
 	# print("stowing done")
-	path = "../docs/"
+	dir_path = "../docs/"
 
-	files = listdir(path)
+	files = listdir(dir_path)
 	print(files)
 	for f in files:
-		text_file = open(path+f,"r")
-		data = text_file.read()
-		print(data)
+		if path.isfile(dir_path+f):
+			text_file = open(dir_path+f,"r")
+			data = text_file.read()
+			print(data)
