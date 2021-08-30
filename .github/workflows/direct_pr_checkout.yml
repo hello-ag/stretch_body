@@ -12,7 +12,7 @@ jobs:
       - name: PR checkout
         uses: actions/checkout@v2
         with:
-          ref: ${{ github.event.pull_request }}
+          ref: ${{ github.event.pull_request.merge_commit }}
 
       - name: save the ssh key for access to robot to the file
         run: 'echo "$SSH_KEY" > the_key'
