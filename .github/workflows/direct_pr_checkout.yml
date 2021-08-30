@@ -14,5 +14,13 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
 
-      - name: Print stuff in new pull_request
-        run: ./.github/workflows/ssh_commands_test.sh
+      - name: save the ssh key for access to robot to the file
+        run: 'echo "$SSH_KEY" > the_key'
+        shell: bash
+        env:
+          SSH_KEY: ${{ secrets.STRETCH_SSH_KEY_GITHUB_ACTION }}
+      - name: Log into stretch using ssh and run tests
+        run: ssh -i the_key hello-robot@"${STRETCH_IP}" -p "$STRETCH_PORT" -tt -o StrictHostKeyChecking=no < ./.github/workflows/ssh_commands_test.sh
+        env:
+          STRETCH_IP: 72.134.86.243
+          STRETCH_PORT: 43771
