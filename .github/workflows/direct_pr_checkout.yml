@@ -12,7 +12,7 @@ jobs:
       - name: PR checkout
         uses: actions/checkout@v2
         with:
-          ref: ${{ github.event.pull_request.merge_commit }}
+          ref: ${{ github.event.pull_request.head.sha }}
 
       - name: save the ssh key for access to robot to the file
         run: 'echo "$SSH_KEY" > the_key'
@@ -20,6 +20,7 @@ jobs:
         env:
           SSH_KEY: ${{ secrets.STRETCH_SSH_KEY_GITHUB_ACTION }}
       - run: chmod 400 the_key
+      - run: 
       - name: Log into stretch using ssh and run tests
         run: ssh -i the_key hello-robot@"${STRETCH_IP}" -p "$STRETCH_PORT" -tt -o StrictHostKeyChecking=no < ./.github/workflows/ssh_commands_test.sh
         env:
