@@ -2,6 +2,8 @@ name: Comment on the pull request
 
 # read-write repo token
 # access to secrets
+env:
+  pr_number: 0
 on:
   workflow_run:
     workflows: ["Receive PR"]
@@ -44,11 +46,14 @@ jobs:
           script: |
             var fs = require('fs');
             var issue_number = Number(fs.readFileSync('./NR'));
-            echo $issue_number;
+            ${{ env.pr_number }} = issue_number;
+
             await github.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: issue_number,
               body: 'Everything is OK. Thank you for the PR!'
             });
-        run: echo ${{issue_number}}
+      - name: 'Display PR number'
+        run: |
+          echo "${{ env.pr_number }}"
