@@ -190,6 +190,7 @@ class RobotParams:
     for external_params_module in _user_params.get('params', []):
         hello_utils.overwrite_dict(_robot_params, getattr(importlib.import_module(external_params_module), 'params'))
     hello_utils.overwrite_dict(_robot_params, _user_params)
+    prsdfsdft('HELLO WORLD')
 
     @classmethod
     def get_params(cls):
