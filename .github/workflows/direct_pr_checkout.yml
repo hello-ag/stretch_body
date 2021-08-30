@@ -2,14 +2,17 @@ name: Checkout new PR
 on:
   pull_request_target:
 jobs:
-  - name: View context attributes
-    uses: actions/github-script@v4
-    with:
-      script: console.log(context)
-  - name: PR checkout
-    uses: actions/checkout@v2
-    with:
-      ref: ${{ github.event.pull_request.head.sha }}
+  Checkout_PR_and_run_tests:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: View context attributes
+        uses: actions/github-script@v4
+        with:
+          script: console.log(context)
+      - name: PR checkout
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
 
-  - name: Print stuff in new pull_request
-    run: ./.github/workflows/ssh_commands_test.sh
+      - name: Print stuff in new pull_request
+        run: ./.github/workflows/ssh_commands_test.sh
