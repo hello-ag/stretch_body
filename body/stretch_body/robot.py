@@ -93,6 +93,7 @@ class Robot(Device):
     API to the Stretch RE1 Robot
     """
     def __init__(self):
+        print('HELLO WORLD!!!')
         Device.__init__(self, 'robot')
         self.monitor = RobotMonitor(self)
         self.collision = RobotCollision(self)
