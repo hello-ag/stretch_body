@@ -36,7 +36,7 @@ class Temporary_tests(unittest.TestCase):
 	r.stop()
 
 	# print("stowing done")
-	path = "/docs/git_action_files/"
+	path = "../docs/"
 
 	files = listdir(path)
 	print(files)
