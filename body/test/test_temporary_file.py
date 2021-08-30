@@ -12,9 +12,9 @@ import stretch_body.robot
 class Temporary_tests(unittest.TestCase):
 
 	r = stretch_body.robot.Robot()
-	r.startup()
-	print("Starting home and stow operations")
-	r.home()
+	# r.startup()
+	# print("Starting home and stow operations")
+	# r.home()
 	# r.pull_status()
 	# time.sleep(1) # wrist_yaw yields 3.4 (stowed position) unless sleep here
 	# self.assertAlmostEqual(r.status['lift']['pos'], 0.58, places=1)
