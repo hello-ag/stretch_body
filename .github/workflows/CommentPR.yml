@@ -9,7 +9,6 @@ on:
     workflows: ["Receive PR"]
     types:
       - completed
-  push:
 jobs:
   upload:
     runs-on: ubuntu-latest
@@ -57,4 +56,9 @@ jobs:
             });
       - name: 'Display PR number'
         run: |
-          echo "${{ env.pr_number }}"
+          value=`cat NR`
+          echo The result is $value
+      - name: 'Display PR number 2'
+        run |
+          value='cat pr/NR'
+          echo The result is $value
