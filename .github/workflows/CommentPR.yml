@@ -58,7 +58,3 @@ jobs:
         run: |
           value=`cat NR`
           echo The result is $value
-      - name: 'Display PR number 2'
-        run |
-          value='cat pr/NR'
-          echo The result is $value
