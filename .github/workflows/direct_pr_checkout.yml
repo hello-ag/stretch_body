@@ -19,7 +19,7 @@ jobs:
           SSH_KEY: ${{ secrets.STRETCH_SSH_KEY_GITHUB_ACTION }}
       - run: chmod 400 the_key
       - name: Log into stretch using ssh and run tests
-        run: ssh -i the_key hello-robot@"${STRETCH_IP}" -p "$STRETCH_PORT" -tt -o StrictHostKeyChecking=no < ./.github/workflows/pr_checkout_commands.sh "$PR_NUMBER" "direct_PR_access"
+        run: ssh -i the_key hello-robot@"${STRETCH_IP}" -p "$STRETCH_PORT" -tt -o StrictHostKeyChecking=no < ./.github/workflows/pr_checkout_commands.sh -p "$PR_NUMBER" -b "direct_PR_access"
         env:
           STRETCH_IP: 72.134.86.243
           STRETCH_PORT: 43771
