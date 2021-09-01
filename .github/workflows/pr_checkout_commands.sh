@@ -1,7 +1,7 @@
-while getopts p:b: flag
+while getopts pn:b: flag
 do
     case "${flag}" in
-        p) pr_number=${OPTARG};;
+        pn) pr_number=${OPTARG};;
         b) branch_name=${OPTARG};;
     esac
 done
