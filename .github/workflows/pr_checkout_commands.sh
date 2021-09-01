@@ -15,7 +15,7 @@ declare -a TestFiles=("test_arm" "test_dxl_comms" "test_end_of_arm" "test_hello_
 declare -a TestFiles2=("test_hello_utils")
 declare -a TestFiles3=("test_robot_params")
 # Iterate the string array using for loop
-for fileName in ${TestFiles3[@]}; do
+for fileName in ${TestFiles2[@]}; do
    python -m unittest test.$fileName
 done
 cd ../..
