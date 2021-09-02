@@ -17,6 +17,12 @@ jobs:
         env:
           SSH_KEY: ${{ secrets.STRETCH_SSH_KEY_GITHUB_ACTION }}
       - run: chmod 400 the_key
+
+      - name: Print out PR reference values
+        run: |
+          echo github.base_ref: ${{ github.base_ref }}
+          echo github.head_ref: ${{ github.head_ref }}
+          echo github.ref: ${{ github.ref }}
       - run: touch ssh_commands_pr_info.sh; cat ssh_commands_pr_info.sh
       - name: Replace PR number
         run: sed -e "s/\$1/${PR_NUMBER}/g" -e "s/\$2/${BRANCH_NAME}/g" .github/workflows/pr_checkout_commands.sh > ssh_commands_pr_info.sh; cat ssh_commands_pr_info.sh
