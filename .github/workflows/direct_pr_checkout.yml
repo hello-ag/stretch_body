@@ -19,12 +19,9 @@ jobs:
       - run: chmod 400 the_key
       - run: touch ssh_commands_pr_info.sh; cat ssh_commands_pr_info.sh
       - name: Replace PR number
-        run: sed "s/\$1/${PR_NUMBER}/" .github/workflows/pr_checkout_commands.sh > ssh_commands_pr_info.sh; cat ssh_commands_pr_info.sh
+        run: sed -e "s/\$1/${PR_NUMBER}/g" -e "s/\$2/${BRANCH_NAME}/g" .github/workflows/pr_checkout_commands.sh > ssh_commands_pr_info.sh; cat ssh_commands_pr_info.sh
         env:
           PR_NUMBER: 6
-      - name: Replace branch name
-        run: sed "s/\$2/${BRANCH_NAME}/" ssh_commands_pr_info.sh > ssh_commands_pr_info.sh; cat ssh_commands_pr_info.sh
-        env:
           BRANCH_NAME: direct_PR_access
       - run: cat ssh_commands_pr_info.sh
       - name: Log into stretch using ssh and run tests
