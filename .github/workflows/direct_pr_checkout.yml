@@ -11,20 +11,19 @@ jobs:
           script: console.log(context)
       - name: PR checkout
         uses: actions/checkout@v2
-
       - name: save the ssh key for access to robot to the file
         run: 'echo "$SSH_KEY" > the_key'
         shell: bash
         env:
           SSH_KEY: ${{ secrets.STRETCH_SSH_KEY_GITHUB_ACTION }}
       - run: chmod 400 the_key
-      - run: touch ssh_commands_pr_info.sh
+      - run: touch ssh_commands_pr_info.sh; cat ssh_commands_pr_info.sh
       - name: Replace PR number
-        run: sed "s/\$pr_number/${PR_NUMBER}/" .github/workflows/pr_checkout_commands.sh > ssh_commands_pr_info.sh
+        run: sed "s/\$1/${PR_NUMBER}/" .github/workflows/pr_checkout_commands.sh > ssh_commands_pr_info.sh; cat ssh_commands_pr_info.sh
         env:
           PR_NUMBER: 6
       - name: Replace branch name
-        run: sed "s/\$branch_name/${BRANCH_NAME}/" ssh_commands_pr_info.sh > ssh_commands_pr_info.sh
+        run: sed "s/\$2/${BRANCH_NAME}/" ssh_commands_pr_info.sh > ssh_commands_pr_info.sh; cat ssh_commands_pr_info.sh
         env:
           BRANCH_NAME: direct_PR_access
       - run: cat ssh_commands_pr_info.sh
