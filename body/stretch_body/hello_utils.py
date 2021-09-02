@@ -109,7 +109,7 @@ def pretty_print_dict(title, d):
     print('-------- {0} --------'.format(title))
     for k in d.keys():
         if type(d[k]) != dict:
-            print(k, ' : ', d[k])
+            print(k, ' is ', d[k])
     for k in d.keys():
         if type(d[k]) == dict:
             pretty_print_dict(k, d[k])
