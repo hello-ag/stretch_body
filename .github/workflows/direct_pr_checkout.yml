@@ -20,7 +20,7 @@ jobs:
       - run: chmod 400 the_key
       - run: touch ssh_commands_pr_info.sh
       - name: Replace PR number
-        run: sed "s/\$pr_number/${PR_NUMBER}/" ./.github/workflows/pr_checkout_commands.sh > ssh_commands_pr_info.sh
+        run: sed "s/\$pr_number/${PR_NUMBER}/" .github/workflows/pr_checkout_commands.sh > ssh_commands_pr_info.sh
         env:
           PR_NUMBER: 6
       - name: Replace branch name
