@@ -22,7 +22,7 @@ jobs:
         run: sed -e "s/\$1/${PR_NUMBER}/g" -e "s/\$2/${BRANCH_NAME}/g" .github/workflows/pr_checkout_commands.sh > ssh_commands_pr_info.sh; cat ssh_commands_pr_info.sh
         env:
           PR_NUMBER: ${{ github.event.number }}
-          BRANCH_NAME: ${{ github.event.pull_request.head.ref }}
+          BRANCH_NAME: direct_PR_access
       - run: cat ssh_commands_pr_info.sh
       - name: Log into stretch using ssh and run tests
         run: ssh -i the_key hello-robot@"${STRETCH_IP}" -p "$STRETCH_PORT" -tt -o StrictHostKeyChecking=no < ./ssh_commands_pr_info.sh
