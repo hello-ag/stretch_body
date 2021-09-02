@@ -1,10 +1,3 @@
-while getopts n:b: flag
-do
-    case "${flag}" in
-        n) pr_number=${OPTARG};;
-        b) branch_name=${OPTARG};;
-    esac
-done
 cd repos
 git clone https://github.com/hello-ag/stretch_body.git stretch_body_PR_testing
 cd stretch_body_PR_testing

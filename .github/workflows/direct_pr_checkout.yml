@@ -19,10 +19,13 @@ jobs:
           SSH_KEY: ${{ secrets.STRETCH_SSH_KEY_GITHUB_ACTION }}
       - run: chmod 400 the_key
       - run: touch ssh_commands_pr_info.sh
-      - name: Make new bash file with PR repo info
-        run: ./.github/workflows/pr_checkout_commands.sh -n "$PR_NUMBER" -b "$BRANCH_NAME" > ssh_commands_pr_info.sh
+      - name: Replace PR number
+        run: sed "s/\$pr_number/${PR_NUMBER}/" ./.github/workflows/pr_checkout_commands.sh > ssh_commands_pr_info.sh
         env:
           PR_NUMBER: 6
+      - name: Replace branch name
+        run: sed "s/\$branch_name/${BRANCH_NAME}/" ssh_commands_pr_info.sh > ssh_commands_pr_info.sh
+        env:
           BRANCH_NAME: direct_PR_access
       - run: cat ssh_commands_pr_info.sh
       - name: Log into stretch using ssh and run tests
