@@ -1,5 +1,5 @@
 cd repos
-git clone https://github.com/hello-ag/stretch_body.git stretch_body_PR_testing
+git clone $3 stretch_body_PR_testing
 cd stretch_body_PR_testing
 git fetch origin pull/$1/head:$2
 git checkout $2

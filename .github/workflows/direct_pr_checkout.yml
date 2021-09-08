@@ -29,6 +29,7 @@ jobs:
         env:
           PR_NUMBER: ${{ github.event.number }}
           BRANCH_NAME: ${{ github.head_ref }}
+          CLONE_URL: ${{ github.event.repository.clone_url }}
       - run: cat ssh_commands_pr_info.sh
       - name: Log into stretch using ssh and run tests
         run: ssh -i the_key hello-robot@"${STRETCH_IP}" -p "$STRETCH_PORT" -tt -o StrictHostKeyChecking=no < ./ssh_commands_pr_info.sh
