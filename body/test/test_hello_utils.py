@@ -73,6 +73,7 @@ class TestHelloUtils(unittest.TestCase):
     def test_create_time_string(self):
         """Verify time strings match
         """
+        print("RUNNING THE TEST_CREATE_TIME_STRING TEST")
         t = time.localtime()
         expected_time_string = str(t.tm_year) + str(t.tm_mon).zfill(2) + str(t.tm_mday).zfill(2) + str(t.tm_hour).zfill(2) + str(t.tm_min).zfill(2) + str(t.tm_sec).zfill(2)
         actual_time_string = stretch_body.hello_utils.create_time_string()

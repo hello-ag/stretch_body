@@ -22,6 +22,7 @@ def create_time_string(time_format='%Y%m%d%H%M%S'):
     str
         time as string in requested format
     """
+    sdlkfjsdfkljsdlkfj
     return time.strftime(time_format)
 
 def deg_to_rad(x):
